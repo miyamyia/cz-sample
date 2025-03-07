@@ -1,0 +1,31 @@
+{
+  "name": "TypeScript + Commitizen",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-python.python",
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "terminal.integrated.env.linux": {
+          "PATH": "${env:PATH}:/root/.local/bin"
+        }
+      }
+    }
+  },
+  "remoteUser": "root",
+  "features": {
+    "git": "latest"
+  }
+}

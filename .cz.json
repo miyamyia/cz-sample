@@ -1,0 +1,117 @@
+{
+  "commitizen": {
+    "name": "cz_customize",
+    "tag_format": "$version",
+    "version_scheme": "semver",
+    "version": "0.0.1",
+    "update_changelog_on_bump": true,
+    "major_version_zero": true,
+    "customize": {
+      "message_template": "{{change_type}}{% if breaking %}!{% endif %}: {{message}}\n\n{% if body %}{{body}}{% endif %}{% if breaking or footer %}\n\n{% endif %}{% if breaking %}BREAKING CHANGE: {{breaking_change}}{% endif %}{% if footer %}\n\n{{footer}}{% endif %}",
+      "example": "✨ feat: この機能で設定ファイルによるカスタマイズが可能になります",
+      "schema": "<type>: <subject>\n\n<body>\n\n<footer>",
+      "schema_pattern": "(✨ feat|🐛 fix|♻️ refactor|🚀 perf|📚 docs|🔧 chore|🔥 remove|✅ test|🎨 style)(!)?(:\\s.*)",
+      "bump_pattern": "^(✨ feat|🐛 fix)(!)?",
+      "bump_map": {
+        "✨ feat!": "MAJOR",
+        "🐛 fix!": "MAJOR",
+        "✨ feat": "MINOR",
+        "🐛 fix": "PATCH"
+      },
+      "change_type_order": [
+        "BREAKING CHANGE",
+        "✨ feat",
+        "🐛 fix",
+        "♻️ refactor",
+        "🚀 perf",
+        "📚 docs",
+        "🔧 chore",
+        "🔥 remove",
+        "✅ test",
+        "🎨 style"
+      ],
+      "info_path": "cz_customize_info.txt",
+      "info": "このカスタマイズでは、コミットメッセージに絵文字を含めた種別を選択できます",
+      "commit_parser": "^(?P<change_type>✨ feat|🐛 fix|♻️ refactor|🚀 perf|📚 docs|🔧 chore|🔥 remove|✅ test|🎨 style)(?P<breaking>!)?:\\s(?P<message>.*)?",
+      "changelog_pattern": "^(✨ feat|🐛 fix|♻️ refactor|🚀 perf|📚 docs|🔧 chore|🔥 remove|✅ test|🎨 style)(!)?:",
+      "change_type_map": {
+        "✨ feat": "機能追加",
+        "🐛 fix": "バグ修正",
+        "♻️ refactor": "リファクタリング",
+        "🚀 perf": "パフォーマンス改善",
+        "📚 docs": "ドキュメント",
+        "🔧 chore": "雑務",
+        "🔥 remove": "削除",
+        "✅ test": "テスト",
+        "🎨 style": "スタイル"
+      },
+      "questions": [
+        {
+          "type": "list",
+          "name": "change_type",
+          "choices": [
+            {
+              "value": "✨ feat",
+              "name": "✨ feat: 新機能"
+            },
+            {
+              "value": "🐛 fix",
+              "name": "🐛 fix: バグ修正"
+            },
+            {
+              "value": "♻️ refactor",
+              "name": "♻️ refactor: リファクタリング"
+            },
+            {
+              "value": "🚀 perf",
+              "name": "🚀 perf: パフォーマンス改善"
+            },
+            {
+              "value": "📚 docs",
+              "name": "📚 docs: ドキュメント"
+            },
+            {
+              "value": "🔧 chore",
+              "name": "🔧 chore: 設定変更・雑務"
+            },
+            {
+              "value": "🔥 remove",
+              "name": "🔥 remove: コード削除"
+            },
+            {
+              "value": "✅ test",
+              "name": "✅ test: テスト"
+            },
+            {
+              "value": "🎨 style",
+              "name": "🎨 style: スタイル変更"
+            }
+          ],
+          "message": "コミットの種類を選択してください"
+        },
+        {
+          "type": "confirm",
+          "name": "breaking",
+          "message": "破壊的変更が含まれていますか？",
+          "default": false
+        },
+        {
+          "type": "input",
+          "name": "message",
+          "message": "コミットの要約（50文字以内）"
+        },
+        {
+          "type": "input",
+          "name": "body",
+          "message": "コミットの詳細な説明（省略可）",
+          "multiline": true
+        },
+        {
+          "type": "input",
+          "name": "footer",
+          "message": "関連するIssue番号や追加情報（省略可）"
+        }
+      ]
+    }
+  }
+}
